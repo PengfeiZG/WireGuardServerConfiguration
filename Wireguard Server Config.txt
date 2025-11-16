@@ -4,17 +4,18 @@ services:
 		image: ghcr.io/wg-easy/wg-easy 
 	environment: 
 		- PASSWORD_HASH=YOUR PASSWORD OR HASH ##DELETE ' ' when you get the hash and add another $ where it occurs##
-		- WG_HOST=yourdomain.duckdns.org 
+		- WG_HOST=YOURDOMAIN.duckdns.org 
 	volumes: 
 		- ./config:/etc/wireguard 
 		- /lib/modules:/lib/modules 
 	ports: 
 		- "51820:51820/udp" 
-		- "10.0.0.180:51821:51821/tcp" 
+		- "YOURDOMAIN:51821:51821/tcp" 
 	restart: unless-stopped 
 	cap_add: 
 		- NET_ADMIN 
 		- SYS_MODULE 
 	sysctls: 
 		- net.ipv4.ip_forward=1 
+
 		- net.ipv4.conf.all.src_valid_mark=1
